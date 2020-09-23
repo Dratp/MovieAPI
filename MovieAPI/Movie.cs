@@ -18,7 +18,6 @@ namespace MovieAPI
         public string Category { get; set; }
 
         const string server = "Server=7RP7Q13\\SQLEXPRESS;Database=Movie;user id=csharp;password=abc123"; //Dave Server
-        //const string server = "Server=7RP7Q13\\SQLEXPRESS;Database=Movie;user id=csharp;password=abc123"; //Tyler Server
 
         public static Random rand = new Random();
 
