@@ -46,12 +46,14 @@ namespace MovieAPI
             return M;
         }
 
+        /*
         public static List<Movie> TitleSearch(string title)
         {
             IDbConnection db = new SqlConnection(server);
             List<Movie> M = db.Query<Movie>($"select * from [Movie] where Title = {title}").AsList<Movie>();
             return M;
         }
+        */
 
         public static Movie RandomMovie()
         {
@@ -69,6 +71,13 @@ namespace MovieAPI
             int result = rand.Next(0, M.Count);
 
             return M[result];
+        }
+
+        public static List<Movie> TitleSearch(string title)
+        {
+            IDbConnection db = new SqlConnection(server);
+            List<Movie> M = db.Query<Movie>($"select * from [Movie] where Title LIKE '%{title}%'").AsList<Movie>();
+            return M;
         }
 
 

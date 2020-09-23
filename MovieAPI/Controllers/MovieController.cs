@@ -18,11 +18,12 @@ namespace MovieAPI.Controllers
             string b = "Get a list of all movies in a specific category : Movies/Category/Parameter";
             string c = "Get a random movie pick : Movies/Random";
             string d = "Get a random movie pick from a specific category : Movies/{Category Parameter}/RandomMovie";
-            string e = "There is a sql file to build the database";
+            string e = "Get a list of movies which have a keyword in their title : Movies/{Title Parameter}";
+            string f = "There is a sql file to build the database";
             Response.ContentType = "text/html";
-            return Content($"{a}<br />{b}<br />{c}<br />{d}<br />{e}");
+            return Content($"{a}<br />{b}<br />{c}<br />{d}<br />{e}<br />{f}");
         }
-        
+
         //1. Get a list of all movies : Movies/All
         [HttpGet("All")]
         public List<Movie> All()
@@ -60,5 +61,16 @@ namespace MovieAPI.Controllers
             movie = Movie.CategoryRandomMovie(cat);
             return movie;
         }
+
+        // 8. Get a list of movies which have a keyword in their title
+        // User specifies title as a query parameter : Movies/{Title Parameter}
+        [HttpGet("{title}")]
+        public List<Movie> TitleSeach(string title)
+        {
+            List<Movie> M = new List<Movie>();
+            M = Movie.TitleSearch(title);
+            return M;
+        }
+
     }
 }
